@@ -89,6 +89,11 @@
       show: false,
       items: [
         {
+          text: 'ไข่เจียวยำปลากระป๋อง',
+          disabled: false,
+          href: 'A1',
+        },
+        {
           text: 'ลาบหมูทอดใส่สะเดา',
           disabled: false,
           href: 'A2',

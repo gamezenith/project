@@ -10,6 +10,7 @@ import SigninForm from "../views/SigninForm.vue" ;
 import Profile from "../views/Profile.vue" ;
 import Calendar from "../views/Calendar.vue" ;
 
+import food from "../views/food.vue";
 import A1 from "../views/A1.vue";
 import A2 from "../views/A2.vue";
 import A3 from "../views/A3.vue";
@@ -31,32 +32,29 @@ const routes = [
       requiresAuth: true, },
   },
   {
+    path: "/food",
+    name: "Food",
+    component: food,    
+  },
+  {
     path: "/A1",
     name: "A1",
     component: A1,    
-    meta: { 
-      requiresAuth: true, },
   },
   {
     path: "/A2",
     name: "A2",
-    component: A2,    
-    meta: { 
-      requiresAuth: true, },
+    component: A2,
   },
   {
     path: "/A3",
     name: "A3",
-    component: A3,    
-    meta: { 
-      requiresAuth: true, },
+    component: A3,
   },
   {
     path: "/A4",
     name: "A4",
-    component: A4,    
-    meta: { 
-      requiresAuth: true, },
+    component: A4,
   },
   
   {
