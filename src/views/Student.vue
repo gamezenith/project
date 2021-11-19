@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <span class="bg"></span>
     <v-row class="text-center">
       <v-col cols="12">
         <h1 class="display-2 font-weight-bold mb-3 green123">
@@ -318,6 +319,7 @@
     
 
   </v-container>
+  
 </template>
   
 
@@ -649,4 +651,15 @@ export default {
 .green123 {
   color: green;
 }
+.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url( 'https://th.bing.com/th/id/R.e03e794952a7dab29c383171d067fce7?rik=iIV8O5mnMNGOnA&pid=ImgRaw&r=0') no-repeat center center;
+    background-size: cover;
+    background-color: red;
+    transform: scale(1.1);
+  }
 </style>
