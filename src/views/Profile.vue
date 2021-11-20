@@ -1,4 +1,3 @@
-
 <template>
     <v-container>
         <v-row class="text-center">

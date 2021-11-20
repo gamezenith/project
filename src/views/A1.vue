@@ -75,8 +75,8 @@
   </div>
 </template>
 
-  </v-container>  
-
+  </v-container> 
+  
 </template>
 
 
@@ -84,9 +84,9 @@
 
 
 <script>
-  export default {
+  export default {    
     data: () => ({
-      show: false,
+      show: false,      
       items: [
         {
           text: 'ไข่เจียวยำปลากระป๋อง',
@@ -114,16 +114,4 @@
   }
 </script>
 
-<style>
-.bg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: url( 'https://th.bing.com/th/id/R.e03e794952a7dab29c383171d067fce7?rik=iIV8O5mnMNGOnA&pid=ImgRaw&r=0') no-repeat center center;
-    background-size: cover;
-    background-color: red;
-    transform: scale(1.1);
-  }
-</style>
+
