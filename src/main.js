@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-
 import router from './router'
 
 
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
+
 
 
 
@@ -31,6 +31,6 @@ const firebase = initializeApp(firebaseConfig);
 new Vue({
   vuetify,
   router,
-  firebase,
+  firebase,  
   render: h => h(App)
 }).$mount('#app')

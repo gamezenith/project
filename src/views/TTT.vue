@@ -10,8 +10,8 @@
     <v-row>
       <v-col cols="12" class="d-flex justify-center align-center">
         <template>
-          <v-card >
-            <v-card-title >
+          <v-card>
+            <v-card-title>
               Food
               <v-spacer></v-spacer>
               <v-text-field
@@ -28,48 +28,61 @@
                 <v-progress-linear color="red" indeterminate></v-progress-linear>
               </template>
             </v-data-table>
+
+            <!-- <div>
+              <div>
+                <input id="itemForm" />
+                <button v-on:click="addItem">Add Food</button>
+              </div>
+              <ul>
+                <li v-for="item in items" v-bind:key="item.id">
+                  <button v-on:click="deleteItem(index)">X</button>
+                  {{ item.text }}
+                </li>
+              </ul>
+            </div> -->
+
+         <div>
+ 
+  
+
+  <!-- Checkboxes list -->
+  <ul>
+    <li v-for='lang in langsdata' v-bind:key="lang.id">
+     <input type='checkbox' v-bind:value='lang' v-model='languages' >{{ lang }}
+    </li>
+  </ul>
+
+  <!-- Print -->
+  <input type='button' @click='printValues()'  value='> Click Selected Food'>
+
+  <br>
+  Selected Food : {{ selectedlang }}
+
+</div>
+
+
+            
+
+
+
           </v-card>
         </template>
       </v-col>
     </v-row>
-
-    
-
-
-
-    <v-col class="card-padding d-flex justify-center">
-      <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
-      <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
-      <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;&nbsp;&nbsp;
-      <v-btn color="warning" fab dark to="/profile">
-        <v-icon>mdi-account-circle</v-icon>
-      </v-btn>&nbsp;&nbsp;&nbsp;&nbsp;
-      <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
-      <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
-      <v-icon>mdi-heart</v-icon>
-    </v-col>
-    <v-col></v-col>
-
-    <!-- <template>
-      <div class="card-padding d-flex justify-center">
-        <v-alert
-          v-model="alert"
-          border="left"
-          close-text="Close Alert"
-          color="deep-purple accent-4"
-          dark
-          dismissible
-        >
-          กรุณาคำนวณหาค่า price ก่อนทำการบัณทึกข้อมูล โดยไปที่
-          <v-btn color="warning" fab dark to="/price">
-            <v-icon>price</v-icon>
-          </v-btn>
-        </v-alert>
-        <div class="text-center">
-          <v-btn v-if="!alert" color="deep-purple accent-4" dark @click="alert = true">คำแนะนำ</v-btn>
-        </div>
-      </div>
-    </template> -->
+    <v-row>
+      <v-col class="card-padding d-flex justify-center">
+        <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
+        <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
+        <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+        <v-btn color="warning" fab dark to="/profile">
+          <v-icon>mdi-account-circle</v-icon>
+        </v-btn>&nbsp;&nbsp;&nbsp;&nbsp;
+        <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
+        <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
+        <v-icon>mdi-heart</v-icon>
+      </v-col>      
+    </v-row>
   </v-container>
 </template>
 
@@ -93,11 +106,19 @@ import {
 
 
 export default {
-
-
-
-
+  
   data: () => ({
+    
+    isCheckAll: false,
+    langsdata: ["ลาบหมูทอดใส่สะเดา","ไข่เจียวยำปลากระป๋อง","ผัดไทยเส้นบุกสาหร่าย","ต้มยำกุ้งน้ำข้น"],
+    languages: [],
+    selectedlang: "",
+    
+    
+  
+   
+
+    
     Food: [
       {
         foodname: "สุกี้น้ำ",
@@ -151,22 +172,38 @@ export default {
   }),
 
   methods: {
+    // checkAll: function(){
 
+    //   this.isCheckAll = !this.isCheckAll;
+    //   this.languages = [];
+    //   if(this.isCheckAll){ // Check all
+    //     for (var key in this.langsdata) {
+    //       this.languages.push(this.langsdata[key]);
+    //     }
+    //   }
+    // },
+    // updateCheckall: function(){
+    //   if(this.languages.length == this.langsdata.length){
+    //      this.isCheckAll = true;
+    //   }else{
+    //      this.isCheckAll = false;
+    //   }
+    // },
+    printValues: function(){
+      this.selectedlang = "";
+      // Read Checked checkboxes value
+      for (var key in this.languages) {
+         this.selectedlang += this.languages[key]+", "; 
+           
+               
+      }   
+      localStorage.setItem('selectedFood', JSON.stringify(this.selectedlang));
+      
+    },      
+  
 
-
-
-
-
-
-
-    readitem() {
-      if (localStorage.getItem("price") != null) {
-        this.Food = JSON.parse(localStorage.getItem("price"));
-      }
-      console.log(this.Food);
-    },
-
-
+    
+    
     async getItemFromFirestore() {
       console.log("get and sync");
 
@@ -186,7 +223,8 @@ export default {
       console.log(unsubscribe);
     },
 
-
+    
+     
 
 
 
@@ -229,7 +267,6 @@ export default {
 
 
   mounted() {
-    this.readitem();
     this.getItemFromFirestore();
 
   },

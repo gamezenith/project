@@ -56,7 +56,7 @@ export default {
             signInWithEmailAndPassword(auth, this.email, this.password)
                 .then((userCredential) => {
                     // Signed in
-                    console.log(userCredential);
+                    console.log(userCredential);                    
                     this.$router.push({ path: "/profile" });
                     // ... 
                 })
@@ -70,7 +70,7 @@ export default {
             signInWithPopup(auth, provider)
                 .then((result) => {
                     // This gives you a Google Access Token. You can use it to access the Google API.
-                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const credential = GoogleAuthProvider.credentialFromResult(result);                    
                     console.log(credential);
                     this.$router.push({ path: "/profile" });
                     // ...

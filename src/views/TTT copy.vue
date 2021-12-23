@@ -10,8 +10,8 @@
     <v-row>
       <v-col cols="12" class="d-flex justify-center align-center">
         <template>
-          <v-card >
-            <v-card-title >
+          <v-card>
+            <v-card-title>
               Food
               <v-spacer></v-spacer>
               <v-text-field
@@ -33,10 +33,6 @@
       </v-col>
     </v-row>
 
-    
-
-
-
     <v-col class="card-padding d-flex justify-center">
       <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
       <v-icon>mdi-heart</v-icon>&nbsp;&nbsp;
@@ -51,25 +47,12 @@
     <v-col></v-col>
 
     <!-- <template>
-      <div class="card-padding d-flex justify-center">
-        <v-alert
-          v-model="alert"
-          border="left"
-          close-text="Close Alert"
-          color="deep-purple accent-4"
-          dark
-          dismissible
-        >
-          กรุณาคำนวณหาค่า price ก่อนทำการบัณทึกข้อมูล โดยไปที่
-          <v-btn color="warning" fab dark to="/price">
-            <v-icon>price</v-icon>
-          </v-btn>
-        </v-alert>
-        <div class="text-center">
-          <v-btn v-if="!alert" color="deep-purple accent-4" dark @click="alert = true">คำแนะนำ</v-btn>
-        </div>
-      </div>
-    </template> -->
+      <v-container class="px-0" fluid>
+        <v-checkbox :label="`Checkbox 1: ${Food.foodname}`"></v-checkbox>
+      </v-container>
+    </template>-->
+
+    
   </v-container>
 </template>
 
@@ -93,10 +76,6 @@ import {
 
 
 export default {
-
-
-
-
   data: () => ({
     Food: [
       {
@@ -252,4 +231,12 @@ export default {
   background-color: red;
   transform: scale(1.1);
 }
+
+.container-fluid .wj-listbox {
+        max-height: 200px;
+    }
+
+    body {
+        margin-bottom: 24pt;
+    }
 </style>

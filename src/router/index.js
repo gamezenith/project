@@ -1,24 +1,23 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import bmi from "../views/BMITest.vue";
-import About from "../views/About.vue";
-import Guide from "../views/Guide.vue";
 
-import HelloWorld from "../components/HelloWorld.vue";
-import Student from "../views/Student.vue";
+
+import AdminCreate from "../views/AdminCreate.vue";
 import SigninForm from "../views/SigninForm.vue" ;
 import Profile from "../views/Profile.vue" ;
 import Calendar from "../views/Calendar.vue" ;
-
-import food from "../views/food.vue";
+import Food from "../views/Food.vue";
+import Guide from "../views/Guide.vue";
 import A1 from "../views/A1.vue";
 import A2 from "../views/A2.vue";
 import A3 from "../views/A3.vue";
 import A4 from "../views/A4.vue";
-
+import TTT from "../views/TTT.vue";
 
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
 
 
 Vue.use(VueRouter);
@@ -26,15 +25,29 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Student,    
+    name: "Food",
+    component: Food,    
     meta: { 
-      requiresAuth: true, },
+      requiresAuth: true, 
+    },
   },
   {
-    path: "/food",
-    name: "Food",
-    component: food,    
+    path: "/Guide",
+    name: "Guide",
+    component: Guide,    
+  },
+  {
+    path: "/AdminCreate",
+    name: "AdminCreate",
+    component: AdminCreate,  
+    meta: { 
+      requiresAuth: true, 
+    },  
+  },
+  {
+    path: "/TTT",
+    name: "TTT",
+    component: TTT,    
   },
   {
     path: "/A1",
@@ -74,31 +87,10 @@ const routes = [
     meta: { 
       requiresAuth: true, },
   },
-  {
-    path: "/abc",
-    name: "HelloWorld",
-    component: HelloWorld,
-  }, 
-  {
-    path: "/guide",
-    name: "Guide",
-    component: Guide,
-  },
-  {
-    path: "/bmi",
-    name: "Student",
-    component: bmi,    
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: About,
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () =>
-    //   import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
+  
+
+ 
+  
 ];
 
 const router = new VueRouter({
@@ -107,11 +99,26 @@ const router = new VueRouter({
   // base: "/ite",
 });
 
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some((record) => record.meta.requiresAuth)) {
+//     const auth = getAuth(); 
+//     onAuthStateChanged(auth, (user) => {
+//       if (user) {
+//         next(); 
+//       } else { 
+//         next({ path: "/signinform" }); 
+//       } 
+//     }); 
+//   } else { 
+//     next(); 
+//   } 
+// });
+
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     const auth = getAuth(); 
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user) {        
         next(); 
       } else { 
         next({ path: "/signinform" }); 
@@ -121,6 +128,8 @@ router.beforeEach((to, from, next) => {
     next(); 
   } 
 });
+
+
 
 
 export default router;

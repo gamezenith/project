@@ -70,12 +70,32 @@
       :items="items"
       divider="-"
     ></v-breadcrumbs>
-
-    
   </div>
+  
+  
+  <div>
+  <!-- Checkboxes list -->
+  <ul>
+    <li v-for='score in scoredata' v-bind:key="score.id">
+     <input type='checkbox' v-bind:value='score' v-model='scoreuages' >{{ score }}
+    </li>
+  </ul>
+
+  <!-- Print -->
+  <input type='button' @click='printValues()'  value='> Click Selected Score'>
+
+  <br>
+  Selected Score : {{ selectedscore }}
+
+</div>
+    
+
+  
 </template>
 
+
   </v-container> 
+  
   
 </template>
 
@@ -86,6 +106,9 @@
 <script>
   export default {    
     data: () => ({
+      scoredata: ["0 คะแนน" ,"1 คะแนน","2 คะแนน","3 คะแนน","4 คะแนน","5 คะแนน"],
+      scoreuages: [],
+      selectedscore: "",
       show: false,      
       items: [
         {
@@ -108,10 +131,24 @@
           disabled: false,
           href: 'A4',
         },
-      ],
+      ],      
     }),
-    
+     methods: {
+    printValues: function(){
+      this.selectedscore = "";
+      // Read Checked checkboxes value
+      for (var key in this.scoreuages) {
+         this.selectedscore += this.scoreuages[key]+", "; 
+           
+               
+      }   
+      localStorage.setItem('selectedscore', JSON.stringify(this.selectedscore));
+      
+    },      
   }
+  }
+
+  
 </script>
 
 
