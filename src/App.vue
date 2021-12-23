@@ -53,7 +53,7 @@
         &nbsp;&nbsp;
         &nbsp;&nbsp;   -->
 
-        <v-toolbar-title class="pointer" @click="goto('/TTT')"
+        <v-toolbar-title v-if="signInState" class="pointer" @click="goto('/TTT')"
           >Test(Local)</v-toolbar-title >
          
          

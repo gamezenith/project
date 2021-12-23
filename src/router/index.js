@@ -47,7 +47,10 @@ const routes = [
   {
     path: "/TTT",
     name: "TTT",
-    component: TTT,    
+    component: TTT, 
+    meta: { 
+      requiresAuth: true, 
+    },    
   },
   {
     path: "/A1",
