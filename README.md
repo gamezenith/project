@@ -20,5 +20,11 @@ npm run build
 npm run lint
 ```
 
+### IdPass Addmin
+Id      : admin@gmail.com
+Pass    : 123456
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
